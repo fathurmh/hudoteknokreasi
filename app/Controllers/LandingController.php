@@ -30,7 +30,9 @@ class LandingController extends BaseController
         $temp_path = getcwd();
 
         chdir(ROOTPATH);
+        shell_exec("sudo su");
         shell_exec("./git-pull.sh");
+        shell_exec("exit");
 
         chdir($temp_path);
 
