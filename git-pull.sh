@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/bin/git pull
+sudo su && /usr/bin/git pull
