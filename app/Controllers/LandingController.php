@@ -24,4 +24,16 @@ class LandingController extends BaseController
 
         return view('landing', $data);
     }
+
+    public function pull()
+    {
+        $temp_path = getcwd();
+
+        chdir(ROOTPATH);
+        shell_exec("./git-pull.sh");
+
+        chdir($temp_path);
+
+        return redirect()->to(base_url());
+    }
 }
