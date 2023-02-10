@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Exception;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use Config\Services;
 
 class LandingController extends BaseController
 {
@@ -27,14 +28,8 @@ class LandingController extends BaseController
 
     public function pull()
     {
-        $temp_path = getcwd();
-
-        chdir(ROOTPATH);
-        shell_exec("sudo su");
-        shell_exec("./git-pull.sh");
-        shell_exec("exit");
-
-        chdir($temp_path);
+        $client = Services::curlrequest();
+        $response = $client->request('GET', 'https://hudoteknokreasi.com:7800/hook?access_key=so7fd2SKGfHQfCtqTnE6J9FRfZC2dx2FQezY4K1EaGniw94s');
 
         return redirect()->to(base_url());
     }
